@@ -15,8 +15,8 @@
 
   <div class="space-y-3 text-left ">
     <mat-form-field appearance="outline" class="w-full" >
-      <mat-label>Username</mat-label>
-      <input matInput placeholder="Username" >
+      <mat-label>Username & Email address</mat-label>
+      <input matInput placeholder="Username & Email address" (keydown)="keyDownFunction($event)" [(ngModel)]="username" >
     </mat-form-field>
 <!--    <div class="relative">-->
 <!--      <input matInput  (keydown)="keyDownFunction($event)" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="text" id="username" class="peer block w-full h-12" placeholder=" " />-->
@@ -29,8 +29,10 @@
     <div class="relative">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Password">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <input type="password" matInput placeholder="Password" (keydown)="keyDownFunction($event)" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [type]="showPassword ? 'text' : 'password'" id="password">
+        <span class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300" (click)="showPassword = !showPassword">
+                  <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </span>
       </mat-form-field>
 <!--      <input matInput (keydown)="keyDownFunction($event)" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [type]="showPassword ? 'text' : 'password'" id="password" class="peer block w-full h-12" placeholder=" " />-->
 <!--      <label-->
