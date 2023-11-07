@@ -1,54 +1,38 @@
 <!-- login form -->
 <form class="my-10 space-y-6">
   <div class="text-center">
-    <h2 class="mb-1 text-3xl font-semibold text-gray-700 dark:text-white">
-      <ng-container *ngIf="!message">
-        <span> Welcome</span><span class="text-primary-500">!</span>
-      </ng-container>
-      <ng-container *ngIf="message">
-        <span class="text-rose-500">{{message}}</span>
-      </ng-container>
+<!--    <h2 class="mb-1 text-3xl font-semibold text-gray-700 dark:text-white">-->
+<!--      <ng-container *ngIf="!message">-->
+<!--        <span> Welcome</span><span class="text-primary-500">!</span>-->
+<!--      </ng-container>-->
+<!--      <ng-container *ngIf="message">-->
+<!--        <span class="text-rose-500">{{message}}</span>-->
+<!--      </ng-container>-->
 
-    </h2>
+<!--    </h2>-->
     <p class="text-sm text-gray-400 dark:text-night-200">Enter your credential to access your account.</p>
   </div>
 
-  <div class="space-y-3 text-left ">
+  <div class="space-y-3 text-left " [formGroup]="form">
     <mat-form-field appearance="outline" class="w-full" >
-      <mat-label>Username & Email address</mat-label>
-      <input matInput placeholder="Username & Email address" (keydown)="keyDownFunction($event)" [(ngModel)]="username" >
+      <mat-label>Username or Email address</mat-label>
+      <input matInput placeholder="Username & Email address" (keydown)="keyDownFunction($event)" formControlName="username" >
     </mat-form-field>
-<!--    <div class="relative">-->
-<!--      <input matInput  (keydown)="keyDownFunction($event)" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="text" id="username" class="peer block w-full h-12" placeholder=" " />-->
-<!--      <label-->
-<!--        for="username"-->
-<!--        class="absolute  top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500 dark:bg-night-700 dark:text-night-200">-->
-<!--        Email address-->
-<!--      </label>-->
-<!--    </div>-->
     <div class="relative">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Password" (keydown)="keyDownFunction($event)" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [type]="showPassword ? 'text' : 'password'" id="password">
-        <span class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300" (click)="showPassword = !showPassword">
+        <input type="password" matInput placeholder="Password" (keydown)="keyDownFunction($event)" formControlName="password" [type]="showPassword ? 'text' : 'password'" id="password">
+        <span class="absolute  right-5 cursor-pointer text-gray-400 dark:text-night-300" (click)="showPassword = !showPassword">
                   <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
                 </span>
       </mat-form-field>
-<!--      <input matInput (keydown)="keyDownFunction($event)" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [type]="showPassword ? 'text' : 'password'" id="password" class="peer block w-full h-12" placeholder=" " />-->
-<!--      <label-->
-<!--        for="password"-->
-<!--        class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-600 dark:bg-night-700 dark:text-night-200">-->
-<!--        Password-->
-<!--      </label>-->
-<!--      <span class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300" (click)="showPassword = !showPassword">-->
-<!--        <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>-->
-<!--      </span>-->
     </div>
   </div>
 
   <!-- Submit Button -->
   <button mat-raised-button color="primary" class="w-full"
     type="button"
-    (click)="onSignIn()">Sign in
+    (click)="onSignIn()"
+  >Sign in
   </button>
 </form>

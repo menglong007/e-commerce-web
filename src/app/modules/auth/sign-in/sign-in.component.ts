@@ -1,24 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
 })
-export class SignInComponent  {
+export class SignInComponent {
   showPassword: boolean = false;
-  username: string = '';
-  password: string = '';
-  loading: boolean = false;
-  message: string | undefined;
+  form : FormGroup = new FormGroup({
+    username : new FormControl<string | null>({
+      value: null , disabled : false
+    }, [Validators.required]),
+    password : new  FormControl<string | null>({
+      value: null , disabled: false
+      }, [Validators.required])
+  })
 
-  constructor() {
+  constructor( private router: Router) {
   }
 
-  onSignIn(): void {
-    if (this.username == '' || this.password == '') {
 
+  onSignIn(): void {
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
       return;
     }
+    this.router.navigate(['./modules/userManagement/user'])
   }
 
   keyDownFunction(event : any ) {
