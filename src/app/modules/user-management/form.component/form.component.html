@@ -1,0 +1,53 @@
+<div class="flex flex-row justify-between p-2">
+  <div class="space-y-1 text-left flex flex-col " [formGroup]="form">
+    <mat-form-field appearance="outline" class="w-52" >
+      <mat-label>Firstname</mat-label>
+      <input matInput placeholder="Firstname" formControlName="firstname" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-52" >
+      <mat-label>Lastname</mat-label>
+      <input matInput placeholder="Lastname" formControlName="lastname" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-52">
+      <mat-label>Phone Number</mat-label>
+      <input matInput placeholder="Phone Number" type="number" formControlName="phone" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-52" >
+      <mat-label>Position</mat-label>
+      <input matInput placeholder="Position" formControlName="position" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-52">
+      <mat-label>Organization</mat-label>
+      <input matInput placeholder="Organization" formControlName="organization" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-52" >
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Address" formControlName="address" >
+    </mat-form-field>
+
+  </div>
+  <div class="w-full p-2">
+    <label for="dropzone-file" class=" w-full mb-4 p-6 aspect-[1/1] flex items-center justify-center  border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+      <div *ngIf="form.get('photo')?.value == null" class="flex flex-col items-center justify-center">
+        <svg aria-hidden="true" [ngClass]="!form.touched || form.get('photo')?.valid ? 'text-gray-400' : 'text-red-400'" class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+        <p class="mb-2 text-sm font-semibold dark:text-gray-400" [ngClass]="!form.touched || form.get('photo')?.valid ? 'text-gray-400' : 'text-red-400'">
+          Click to upload
+        </p>
+      </div>
+      <img *ngIf="form.get('photo')?.value != null" [src]="form.get('photo')?.value | safe" alt="category-photo">
+      <input id="dropzone-file" type="file" accept="image/*" (change)="handleFileInput($event.target)" class="hidden" />
+    </label>
+  </div>
+</div>
+
+
+<div class="w-full flex justify-end p-2 gap-2">
+  <button mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+  <button mat-raised-button color="primary" (click)=" onSave()">Save</button>
+</div>
+
