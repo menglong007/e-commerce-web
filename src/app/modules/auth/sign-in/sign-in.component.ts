@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
 })
-export class SignInComponent {
+export class SignInComponent{
   showPassword: boolean = false;
   form : FormGroup = new FormGroup({
     username : new FormControl<string | null>({
@@ -16,6 +18,7 @@ export class SignInComponent {
       value: null , disabled: false
       }, [Validators.required])
   })
+
 
   constructor( private router: Router) {
   }
@@ -28,6 +31,7 @@ export class SignInComponent {
     }
     this.router.navigate(['./modules/userManagement/user'])
   }
+
 
   keyDownFunction(event : any ) {
     if ( event.keyCode === 13) {

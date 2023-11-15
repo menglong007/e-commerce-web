@@ -1,4 +1,4 @@
-<div class="flex flex-row justify-between p-2">
+<div class="flex flex-row justify-between p-6">
   <div class="space-y-1 text-left flex flex-col " [formGroup]="form">
     <mat-form-field appearance="outline" class="w-52" >
       <mat-label>Firstname</mat-label>
@@ -39,7 +39,7 @@
           Click to upload
         </p>
       </div>
-      <img *ngIf="form.get('photo')?.value != null" [src]="form.get('photo')?.value | safe" alt="category-photo">
+      <img *ngIf="form.get('photo')?.value != null" [src]="form.get('photo')?.value | safe" alt="photo">
       <input id="dropzone-file" type="file" accept="image/*" (change)="handleFileInput($event.target)" class="hidden" />
     </label>
   </div>
@@ -47,7 +47,7 @@
 
 
 <div class="w-full flex justify-end p-2 gap-2">
-  <button mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+  <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
   <button mat-raised-button color="primary" (click)=" onSave()">Save</button>
 </div>
 

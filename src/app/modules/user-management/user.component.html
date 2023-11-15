@@ -1,59 +1,69 @@
-<div class="flex w-full justify-between pt-2 pl-2 pr-2 ">
-  <div class="flex flex-row gap-3 w-auto">
+<div class="flex w-full justify-between  ">
+  <div class="flex flex-row gap-3 w-auto p-2">
     <mat-icon class=" text-2xl">person</mat-icon>
     <h1 class="text-2xl font-bold">User</h1>
   </div>
-  <button mat-raised-button color="primary" (click)="openDialog()">
-    User
-  </button>
+  <div class="gap-3 flex items-center">
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      User
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" >
+      <mat-icon>apps</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="w-80 h-full ">
+      <app-column-editable [columns]="columns" (onSave)="onSave($event)"
+                           (onCancel)="trigger.closeMenu()"></app-column-editable>
+    </mat-menu>
+  </div>
+
 </div>
 
 <div class="mat-elevation-z8  dark:bg-gray-800 p-1 ">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="no">
-      <th mat-header-cell *matHeaderCellDef> No.</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('no')"> No.</th>
       <td mat-cell *matCellDef="let element"> {{element.no}} </td>
     </ng-container>
 
     <ng-container matColumnDef="photo">
-      <th mat-header-cell *matHeaderCellDef> Photo</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('photo')"> Photo</th>
       <td mat-cell *matCellDef="let element">
         <img [src]="element.photo" alt=""> </td>
     </ng-container>
 
     <ng-container matColumnDef="firstname">
-      <th mat-header-cell *matHeaderCellDef> Firstname</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('firstname')"> Firstname</th>
       <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
     </ng-container>
 
     <ng-container matColumnDef="lastname">
-      <th mat-header-cell *matHeaderCellDef> Lastname</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('lastname')"> Lastname</th>
       <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
     </ng-container>
 
     <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef> Phone</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('phone')"> Phone</th>
       <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
     </ng-container>
 
     <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Position</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('position')"> Position</th>
       <td mat-cell *matCellDef="let element"> {{element.position}} </td>
     </ng-container>
 
     <ng-container matColumnDef="organization">
-      <th mat-header-cell *matHeaderCellDef> Organization</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('organization')"> Organization</th>
       <td mat-cell *matCellDef="let element"> {{element.organization}} </td>
     </ng-container>
 
     <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef> Address</th>
+      <th mat-header-cell *matHeaderCellDef [style.width]="getWidth('address')"> Address</th>
       <td mat-cell *matCellDef="let element"> {{element.address}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
 </div>
