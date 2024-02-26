@@ -29,7 +29,7 @@ export class SignInComponent{
       this.form.markAllAsTouched();
       return;
     }
-    this.router.navigate(['./modules/userManagement/user'])
+    this.router.navigate(['./modules/pages/dashboard'])
   }
 
 

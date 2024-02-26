@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ModulesComponent} from './modules.component';
 import {RouterModule, Routes} from "@angular/router";
 import {LayoutModule} from "./layout/layout.module";
+import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
   {
@@ -10,17 +11,18 @@ const routes: Routes = [
     component: ModulesComponent,
     children: [
       {
-        path: 'userManagement',
-        loadChildren: () => import('./user-management/user-management.module').then((m) => m.UserManagementModule),
+        path: 'pages',
+        loadChildren: () => import('./pages/pages.module').then((m) => m.PagesModule),
       },
-      // {path: '', redirectTo: 'userManagement', pathMatch: 'full'},
-    ],
+    ]
   },
+
 ];
 
 @NgModule({
   declarations: [
-    ModulesComponent
+    ModulesComponent,
+    PagesComponent
   ],
   imports: [
     CommonModule,

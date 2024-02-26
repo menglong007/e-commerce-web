@@ -1,8 +1,5 @@
-import {inject, NgModule} from '@angular/core';
+import { NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from "./core/guards/auth.guard";
-import {UnAuthGuard} from "./core/guards/un-auth.guard";
-
 
 const routes: Routes = [
   {
