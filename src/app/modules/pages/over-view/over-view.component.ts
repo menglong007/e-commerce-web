@@ -14,7 +14,6 @@ export class OverViewComponent {
     'fullname',
     'phone',
     'location',
-    'online',
     'pickUp',
     'inActive',
     'action',
