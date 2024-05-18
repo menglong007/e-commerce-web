@@ -1,0 +1,46 @@
+<div class="w-full h-full ">
+  <div class="flex justify-between items-center">
+    <div class="pt-4 pl-4">
+      <p class="text-2xl">{{title}}</p>
+    </div>
+    <button mat-icon-button color="warn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="p-4">
+
+    <form class="flex justify-between space-x-5" [formGroup]="form">
+
+      <div class="w-full h-full">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="phone" formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-select placeholder="subject" formControlName="subjectId">
+            <mat-option  *ngFor="let item of Subject" [value]="item.id">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p><mat-slide-toggle formControlName="status">Status</mat-slide-toggle></p>
+
+      </div>
+    </form>
+    <div  class="flex justify-end items-end h-full">
+      <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    </div>
+  </div>
+
+
+</div>

@@ -1,42 +1,57 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
-import { CreateProductComponent } from './create-product/create-product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
-import {OverViewComponent} from "./over-view/over-view.component";
-import { AddProductComponent } from './create-product/add-product/add-product.component';
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
 import {MatDialogModule} from "@angular/material/dialog";
+import {AttendanceModules} from "./attendance/attendance.modules";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    loadChildren : () => import('./dashboard/dashboard.modules').then((m) => m.DashboardModule),
   },
   {
-    path: 'createProduct',
-    component: CreateProductComponent,
+    path: 'staff',
+    loadChildren : () => import('./staff/staff.modules').then((m) => m.StaffModules),
   },
   {
-    path: 'overView',
-    component: OverViewComponent,
+    path: 'leave',
+    loadChildren : () => import('./leave/leave.modules').then((m) => m.LeaveModules),
+  },
+  {
+    path: 'salary',
+    loadChildren : () => import('./salary/salary.modules').then((m) => m.SalaryModules),
+  },
+  {
+    path: 'attendance',
+    loadChildren : () => import('./attendance/attendance.modules').then((m) => m.AttendanceModules),
+  },
+  {
+    path: 'subject',
+    loadChildren : () => import('./subject/subject.modules').then((m) => m.SubjectModules),
+  },
+  {
+    path: 'student',
+    loadChildren : () => import('./student/student.modules').then((m) => m.StudentModules),
+  },
+  {
+    path: 'student-attendance',
+    loadChildren : () => import('./student-attendance/student-attendance.modules').then((m) => m.StudentAttendanceModules),
   },
 ];
 
 @NgModule({
   declarations: [
-    CreateProductComponent,
     DashboardComponent,
-    OverViewComponent,
-    AddProductComponent
   ],
   imports: [
     CommonModule,

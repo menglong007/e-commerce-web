@@ -1,0 +1,38 @@
+<div class="pl-4 pt-4 pr-4 pb-1 h-full">
+  <div class="h-full bg-white rounded-2xl flex flex-col px-3 py-2 sm:px-8">
+    <div class="flex justify-between items-center">
+      <div class="">
+        <p class="text-3xl font-bold">{{ title }}</p>
+      </div>
+      <div class="flex gap-4">
+        <button mat-raised-button color="accent" [routerLink]="'/modules/pages/salary'">
+          Back
+        </button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+      </div>
+
+    </div>
+    <div class="p-4">
+      <form class="flex flex-col  space-y-3" [formGroup]="form">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-select placeholder="staff" formControlName="staffId">
+            <mat-option *ngFor="let item of Staff" [value]="item.id">{{ item.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput placeholder="amount" formControlName="amount">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-select placeholder="subject" formControlName="subjectId">
+            <mat-option *ngFor="let item of Subject" [value]="item.id">{{ item.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-slide-toggle formControlName="status">Status</mat-slide-toggle>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -14,17 +14,47 @@ export class Menu {
       ]
     },
     {
-      group: 'Pages',
+      group: 'Staff',
       items: [
         {
-          icon: 'create_new_folder',
-          label: 'Create Product',
-          route: '/modules/pages/createProduct'
+          icon: 'group',
+          label: 'Staff',
+          route: '/modules/pages/staff'
         },
         {
-          icon: 'view_list ',
-          label: 'Over View',
-          route: '/modules/pages/overView'
+          icon: 'person_remove',
+          label: 'Leave',
+          route: '/modules/pages/leave'
+        },
+        {
+          icon: 'real_estate_agent',
+          label: 'Salary',
+          route: '/modules/pages/salary'
+        },
+        {
+          icon: 'inventory',
+          label: 'Attendance',
+          route: '/modules/pages/attendance'
+        },
+        {
+          icon: 'bookmark_manager',
+          label: 'subject',
+          route: '/modules/pages/subject'
+        },
+      ]
+    },
+    {
+      group: 'Student',
+      items: [
+        {
+          icon: 'diversity_3',
+          label: 'Student',
+          route: '/modules/pages/student'
+        },
+        {
+          icon: 'inventory',
+          label: 'student-attendance',
+          route: '/modules/pages/student-attendance'
         },
 
       ]
