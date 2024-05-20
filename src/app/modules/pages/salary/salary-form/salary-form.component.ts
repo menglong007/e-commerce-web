@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 interface LeaveModel {
   id: string;
@@ -38,6 +39,7 @@ interface LeaveModel {
     MatDatepickerModule,
     MatNativeDateModule,
     RouterLink,
+    MatSnackBarModule
   ],
   standalone: true,
   providers: [
@@ -61,6 +63,7 @@ export class SalaryFormComponent implements OnInit  {
     private http: HttpClient,
     private _activatedRoute : ActivatedRoute,
     private router : Router,
+    private snackBar : MatSnackBar
   ) {}
 
   id : string | null = null;
@@ -81,7 +84,11 @@ export class SalaryFormComponent implements OnInit  {
   }
 
   private loadData(id : string) {
+    const ref = this.snackBar.open('Loading...!');
       this.http.get(`http://127.0.0.1:8000/api/salary/${id}`).subscribe({
+        complete:()=>{
+          ref.dismiss();
+        },
         next: (value: any) => {
           this.form.patchValue(value.data);
         },

@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -31,6 +31,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatDatepickerModule,
     MatNativeDateModule,
     RouterLink,
+    MatSnackBarModule
   ],
   standalone: true,
   providers: [

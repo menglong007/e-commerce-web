@@ -6,12 +6,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { NgForOf } from '@angular/common';
+import {DatePipe, NgForOf} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, convertToParamMap, Router, RouterLink} from "@angular/router";
+import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-salary-form',
@@ -29,21 +31,24 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
     MatDatepickerModule,
     MatNativeDateModule,
     RouterLink,
+    NgxMatTimepickerModule,
+    MatSnackBarModule
   ],
   standalone: true,
   providers: [
     MatDatepickerModule,
     MatNativeDateModule,
+    DatePipe
   ],
 })
 export class AttendanceFormComponent implements OnInit {
   title: string = 'Add Attendance';
 
   form = new FormGroup({
-    staffName: new FormControl<string | null>('', [Validators.required]),
-    startDate: new FormControl<Date | null>(null, [Validators.required]),
-    endDate: new FormControl<Date | null>(null, [Validators.required]),
-    reason: new FormControl<string | null>('', [Validators.required]),
+    staffId: new FormControl<string | null>('', [Validators.required]),
+    startTime: new FormControl<string | null>(null, [Validators.required]),
+    endTime: new FormControl<string | null>(null, [Validators.required]),
+    subjectId: new FormControl<string | null>('', [Validators.required]),
     status: new FormControl<boolean | null>(true, [Validators.required]),
   });
   Staff: any;
@@ -52,6 +57,7 @@ export class AttendanceFormComponent implements OnInit {
     private http: HttpClient,
     private _activatedRoute : ActivatedRoute,
     private router : Router,
+    private snackBar : MatSnackBar
   ) {}
 
   id : string | null = null;
@@ -71,8 +77,12 @@ export class AttendanceFormComponent implements OnInit {
     });
   }
 
-    loadData(id : string) {
+  private loadData(id : string) {
+    const ref = this.snackBar.open('Loading...!');
       this.http.get(`http://127.0.0.1:8000/api/attendance/${id}`).subscribe({
+        complete:()=>{
+          ref.dismiss();
+        },
         next: (value: any) => {
           this.form.patchValue(value.data);
         },
@@ -91,20 +101,20 @@ export class AttendanceFormComponent implements OnInit {
   private loadSubject() {
     this.http.get('http://127.0.0.1:8000/api/subject').subscribe({
       next: (value: any) => {
-        this.Subject = value.data;
+        this.Subject = value.subject;
       },
     });
   }
 
   onSubmit() {
-    if (this.form.valid) {
+    if (!this.form.valid) {
       this.form.markAllAsTouched();
       return;
     }
     if (this.id) {
-      this.onInsert();
-    } else {
       this.onUpdate();
+    } else {
+      this.onInsert();
     }
   }
 

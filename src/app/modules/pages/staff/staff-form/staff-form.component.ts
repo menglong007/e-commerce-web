@@ -6,7 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSelectModule} from "@angular/material/select";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -35,6 +35,7 @@ interface StaffModel
     MatSelectModule,
     NgForOf,
     MatFormFieldModule,
+    NgIf,
   ],
   standalone: true
 })
@@ -54,7 +55,7 @@ export class StaffFormComponent implements OnInit{
 
   constructor(private http:HttpClient,
               private ref : MatDialogRef<StaffFormComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: StaffModel | null,) {
+              @Inject(MAT_DIALOG_DATA) protected data: StaffModel | null) {
   }
 
   ngOnInit(){
@@ -71,23 +72,18 @@ export class StaffFormComponent implements OnInit{
           });
         }
       })
-
     }
     this.loadSubject();
-    this.loadData();
   }
 
   private loadSubject(){
-    this.http.get('http://127.0.0.1:8000/api/subject').subscribe({
-      next : (value:any) => {
-        this.Subject = value.subject
-      }
-    })
+      this.http.get('http://127.0.0.1:8000/api/subject').subscribe({
+        next: (value: any) => {
+          this.Subject = value.subject
+        }
+      })
   }
 
-  private loadData(){
-
-  }
 
   onSubmit(){
     if (!this.form.valid) {

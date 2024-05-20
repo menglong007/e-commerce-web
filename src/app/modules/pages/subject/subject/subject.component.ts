@@ -59,7 +59,11 @@ export class SubjectComponent implements OnInit{
   }
 
   private loadData(){
+    const ref = this.snackBar.open('Loading...!');
     this.http.get('http://127.0.0.1:8000/api/subject').subscribe({
+      complete:()=>{
+        ref.dismiss();
+      },
       next:(res: any)=>{
         this.dataSource.data = res.subject
       }

@@ -13,20 +13,32 @@
 
     </div>
     <div class="p-4">
-      <form class="flex flex-col  space-y-3" [formGroup]="form">
+      <form class="flex flex-col  space-y-4" [formGroup]="form">
         <mat-form-field appearance="outline" class="w-full">
-          <mat-select placeholder="staff" formControlName="staffName">
+          <mat-select placeholder="staff" formControlName="staffId">
             <mat-option *ngFor="let item of Staff" [value]="item.id">{{ item.name }}</mat-option>
           </mat-select>
         </mat-form-field>
 
+        <div class="flex space-x-4">
+          <div class="w-full">
+            <input formControlName="startTime" [ngxMatTimepicker]="startTime" placeholder="Start Time" matIconSuffix class="w-full h-[56px] rounded border border-gray-500 text-black p-4">
+            <ngx-mat-timepicker #startTime></ngx-mat-timepicker>
+          </div>
+
+          <div  class="w-full" >
+            <input formControlName="endTime" [ngxMatTimepicker]="endTime" matIconSuffix placeholder="End Time" class="w-full rounded h-[56px] border border-gray-500 text-black p-4">
+            <ngx-mat-timepicker #endTime></ngx-mat-timepicker>
+          </div>
+        </div>
+
         <mat-form-field appearance="outline" class="w-full">
-          <mat-select placeholder="subject" formControlName="staffName">
+          <mat-select placeholder="subject" formControlName="subjectId">
             <mat-option *ngFor="let item of Subject" [value]="item.id">{{ item.name }}</mat-option>
           </mat-select>
         </mat-form-field>
 
-          <mat-slide-toggle formControlName="status">Status</mat-slide-toggle>
+        <mat-slide-toggle formControlName="status">Status</mat-slide-toggle>
       </form>
     </div>
   </div>

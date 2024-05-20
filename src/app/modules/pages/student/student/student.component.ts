@@ -60,7 +60,11 @@ export class StudentComponent implements OnInit{
   }
 
   private loadData(){
+    const ref = this.snackBar.open('Loading...!');
     this.http.get('http://127.0.0.1:8000/api/student').subscribe({
+      complete:()=>{
+        ref.dismiss();
+      },
       next:(res: any)=>{
         this.dataSource.data = res.data
       }
@@ -79,7 +83,7 @@ export class StudentComponent implements OnInit{
   }
 
   onDelete(id : string){
-    const ref= this.snackBar.open('loading...');
+    const ref= this.snackBar.open('loading...!');
     this.http.delete(`http://127.0.0.1:8000/api/student/delete/${id}`).subscribe({
       complete :()=>{
         ref.dismiss();
