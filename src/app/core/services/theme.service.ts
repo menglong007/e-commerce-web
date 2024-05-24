@@ -1,25 +1,26 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, EventEmitter } from '@angular/core';
+
+const themeKey: string = 'system-theme';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  public default = 'light';
-  public themeChanged: BehaviorSubject<string> = new BehaviorSubject(this.theme);
+  public defaultTheme = 'light';
+  public themeChanged = new EventEmitter<string>();
 
   constructor() {}
 
   public get theme(): string {
-    return localStorage.getItem('theme') ?? this.default;
+    return localStorage.getItem(themeKey) || this.defaultTheme;
   }
 
   public set theme(value: string) {
-    localStorage.setItem('theme', value);
-    this.themeChanged.next(value);
+    localStorage.setItem(themeKey, value);
+    this.themeChanged.emit(value);
   }
 
   public get isDark(): boolean {
-    return this.theme == 'dark';
+    return this.theme === 'dark';
   }
 }

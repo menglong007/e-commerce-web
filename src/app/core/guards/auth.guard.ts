@@ -9,14 +9,14 @@ export const authGuard: CanActivateChildFn = (childRoute, state) => {
 
   if (state.url.startsWith('/auth')) {
     if (auth) {
-      router.navigate(['/dashboard']);
+      router.navigate(['/modules/pages/dashboard']);
       return false;
     }
     return true;
   }
 
   if (!auth) {
-    router.navigate(['/auth']);
+    router.navigate(['/auth/sign-in']);
     return false;
   }
 

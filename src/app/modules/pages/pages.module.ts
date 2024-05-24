@@ -13,6 +13,7 @@ import {SharedModule} from "../shared/shared.module";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AttendanceModules} from "./attendance/attendance.modules";
 import {PieComponent} from "./dashboard/pie-chart/pie.component";
+import {BarChartComponent} from "./dashboard/bar-chart/bar-chart.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -67,6 +68,7 @@ const routes: Routes = [
     SharedModule,
     MatDialogModule,
     PieComponent,
+    BarChartComponent,
   ]
 })
 export class PagesModule {}

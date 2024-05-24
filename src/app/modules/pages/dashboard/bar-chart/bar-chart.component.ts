@@ -2,22 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {HttpClient} from "@angular/common/http";
 @Component({
-  selector: 'pie-chart',
-  templateUrl: 'pie.component.html',
+  selector: 'bar-chart',
+  templateUrl: 'bar-chart.component.html',
   imports: [
     NgxChartsModule
   ],
   standalone: true
 })
 
-export class PieComponent implements OnInit {
+export class BarChartComponent implements OnInit{
 
-  single: any[] = [];
+  single: any;
 
-  colorScheme: any = {
-    domain: [ '#C7B42C', '#A10A28']
-  };
-
+  showDataLabel : boolean =  true;
   constructor(private http : HttpClient) {
   }
   ngOnInit(){
@@ -25,11 +22,17 @@ export class PieComponent implements OnInit {
   }
 
   private loadData(){
-    this.http.get('http://127.0.0.1:8000/api/pie').subscribe({
+    this.http.get('http://127.0.0.1:8000/api/bar').subscribe({
       next:(value: any) =>{
         this.single = value;
       }
     })
   }
+
+
+  colorScheme: any = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
 
 }
