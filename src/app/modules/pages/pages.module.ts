@@ -12,7 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AttendanceModules} from "./attendance/attendance.modules";
-import {PieChartModule} from "@swimlane/ngx-charts";
+import {PieComponent} from "./dashboard/pie-chart/pie.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -54,19 +54,19 @@ const routes: Routes = [
   declarations: [
     DashboardComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        SharedModule,
-        MatDialogModule,
-        PieChartModule,
-    ]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    SharedModule,
+    MatDialogModule,
+    PieComponent,
+  ]
 })
 export class PagesModule {}

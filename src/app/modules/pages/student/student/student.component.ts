@@ -3,7 +3,6 @@ import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
-import {StudentFormComponent} from "../student-form/student-form.component";
 import {HttpClient} from "@angular/common/http";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {take} from "rxjs";
