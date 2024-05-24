@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {MatSort, MatSortModule} from "@angular/material/sort";
@@ -35,12 +35,13 @@ import {RouterLink} from "@angular/router";
   standalone: true,
 
 })
-export class StudentComponent implements OnInit{
+export class StudentComponent implements OnInit,AfterViewInit{
 
   displayedColumns: string[] = [
     'no',
     'name',
     'gender',
+    'class',
     'phone',
     'status',
     'action',
@@ -54,6 +55,10 @@ export class StudentComponent implements OnInit{
               private snackBar:MatSnackBar) {
   }
 
+  ngAfterViewInit(){
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort
+  }
 
   ngOnInit(){
     this.loadData();

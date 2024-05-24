@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {NgForOf} from '@angular/common';
@@ -13,6 +13,34 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+
+const Class = [
+  {
+    id: 'A',
+    name: 'A',
+  },
+  {
+    id: 'B',
+    name: 'B',
+  },
+  {
+    id: 'C',
+    name: 'C',
+  },
+  {
+    id: 'D',
+    name: 'D',
+  },
+  {
+    id: 'E',
+    name: 'E',
+  },
+  {
+    id: 'F',
+    name: 'F',
+  },
+
+]
 
 const Gender = [
   {
@@ -56,6 +84,7 @@ export class StudentFormComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl<string | null>('', [Validators.required]),
     gender: new FormControl<string | null>(null, [Validators.required]),
+    class: new FormControl<string | null>(null, [Validators.required]),
     phone: new FormControl<number | null>(null, [Validators.required]),
     status: new FormControl<boolean | null>(true, [Validators.required]),
   });
@@ -125,4 +154,6 @@ export class StudentFormComponent implements OnInit {
       },
     });
   }
+
+  protected readonly Class = Class;
 }

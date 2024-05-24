@@ -6,7 +6,7 @@
     <div class="relative h-10 pt-1">
       <div class="flex items-center" *ngIf="showSideBar$ | async">
         <a class="flex items-center justify-center rounded focus:outline-none focus:ring-1">
-          <img src="assets/logo.png" alt="E-commerce Logo" class="h-8 w-8 rounded-lg">
+          <img src="assets/logo.png" alt="School system Logo" class=" w-8 rounded-lg">
         </a>
         <b class="ml-1 pl-2 text-sm font-bold dark:text-night-50">
           {{appName}}
@@ -44,23 +44,6 @@
         <span
           class="z-1 absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
           Theme
-        </span>
-      </div>
-    </div>
-    <!-- Sign out -->
-    <div (click)="onSignOut()"
-      class="group flex h-9 cursor-pointer items-center justify-start rounded p-2 hover:bg-gray-100 dark:hover:bg-night-600">
-      <mat-icon class="text-gray-400 dark:text-night-400">logout</mat-icon>
-
-      <a
-        class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-600 focus:outline-none dark:text-night-100">
-        Sign out
-      </a>
-
-      <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
-        <span
-          class="z-1 absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
-          Sign out
         </span>
       </div>
     </div>

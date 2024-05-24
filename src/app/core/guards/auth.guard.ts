@@ -1,22 +1,25 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import {AuthService} from "../services/auth.service";
+import { CanActivateChildFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
+export const authGuard: CanActivateChildFn = (childRoute, state) => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const auth = authService.token != null;
 
-@Injectable({ providedIn: 'root' })
-export class AuthGuard {
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) { }
-
-  canActivateChild(): boolean {
-    const auth = this.authService.authValue;
+  if (state.url.startsWith('/auth')) {
     if (auth) {
-      return true;
-    } else {
-      this.router.navigate(['/auth']).finally();
+      router.navigate(['/dashboard']);
       return false;
     }
+    return true;
   }
-}
+
+  if (!auth) {
+    router.navigate(['/auth']);
+    return false;
+  }
+
+  return true;
+};
+

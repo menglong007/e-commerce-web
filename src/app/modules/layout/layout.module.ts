@@ -20,6 +20,7 @@ import {LayoutComponent} from './layout.component';
 import {MatIconModule} from "@angular/material/icon";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import {SharedModule} from "../shared/shared.module";
     NavbarMobileMenuComponent,
     NavbarMobileSubmenuComponent,
   ],
-  imports: [CommonModule, RouterModule, SharedModule, MatIconModule, NgOptimizedImage],
+  imports: [CommonModule, RouterModule, SharedModule, MatIconModule, NgOptimizedImage,MatSnackBarModule],
   exports: [LayoutComponent],
 })
 export class LayoutModule {

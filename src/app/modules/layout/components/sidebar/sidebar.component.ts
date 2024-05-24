@@ -34,7 +34,4 @@ export class SidebarComponent implements OnInit {
     this.themeService.theme = !this.themeService.isDark ? 'dark' : 'light';
   }
 
-  public onSignOut(): void {
-    this._authService.logout();
-  }
 }

@@ -1,4 +1,5 @@
 <!-- login form -->
+<p class="text-3xl text-center text-cyan-700 font-bold">School System Management</p>
 <form class="my-10 space-y-6">
   <div class="text-center">
 
@@ -6,16 +7,18 @@
   </div>
 
   <div class="space-y-3 text-left " [formGroup]="form">
-    <mat-form-field appearance="outline" class="w-full" >
-      <mat-label>Username or Email address</mat-label>
-      <input matInput placeholder="Username & Email address" (keydown)="keyDownFunction($event)" formControlName="username" >
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Email address</mat-label>
+      <input matInput placeholder="email & Email address" (keydown)="keyDownFunction($event)" formControlName="email">
     </mat-form-field>
     <div class="relative">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Password" (keydown)="keyDownFunction($event)" formControlName="password" [type]="showPassword ? 'text' : 'password'" id="password">
-        <span class="absolute  right-5 cursor-pointer text-gray-400 dark:text-night-300" (click)="showPassword = !showPassword">
-                  <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <input type="password" matInput placeholder="Password" (keydown)="keyDownFunction($event)"
+               formControlName="password" [type]="showPassword ? 'text' : 'password'" id="password">
+        <span class="absolute  right-5 cursor-pointer text-gray-400 dark:text-night-300"
+              (click)="showPassword = !showPassword">
+                  <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
                 </span>
       </mat-form-field>
     </div>
@@ -23,8 +26,8 @@
 
   <!-- Submit Button -->
   <button mat-raised-button color="primary" class="w-full"
-    type="button"
-    (click)="onSignIn()"
+          type="button"
+          (click)="onSignIn()"
   >Sign in
   </button>
 </form>
