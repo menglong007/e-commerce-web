@@ -49,6 +49,10 @@ const routes: Routes = [
     path: 'student-attendance',
     loadChildren : () => import('./student-attendance/student-attendance.modules').then((m) => m.StudentAttendanceModules),
   },
+  // {
+  //   path: 'score',
+  //   loadChildren : () => import('./score/score.modules').then((m) => m.ScoreModules),
+  // },
 ];
 
 @NgModule({

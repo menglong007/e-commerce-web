@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import {DatePipe, NgForOf} from '@angular/common';
+import {DatePipe, NgClass, NgForOf} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -31,7 +31,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     MatDatepickerModule,
     MatNativeDateModule,
     RouterLink,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgClass
   ],
   standalone: true,
   providers: [
@@ -51,6 +52,7 @@ export class LeaveFormComponent implements OnInit {
       status: new FormControl<boolean | null>(true, [Validators.required]),
     });
     Staff: any;
+    StaffName:any;
 
     constructor(
       private http: HttpClient,
@@ -83,6 +85,7 @@ export class LeaveFormComponent implements OnInit {
           },
           next: (value: any) => {
             this.form.patchValue(value.data);
+            this.StaffName = value.data.staffName;
           },
         });
 

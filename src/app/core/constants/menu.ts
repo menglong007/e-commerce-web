@@ -56,6 +56,11 @@ export class Menu {
           label: 'student-attendance',
           route: '/modules/pages/student-attendance'
         },
+        // {
+        //   icon: 'inventory',
+        //   label: 'score',
+        //   route: '/modules/pages/score'
+        // },
 
       ]
     },

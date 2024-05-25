@@ -6,12 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import {DatePipe, NgForOf} from '@angular/common';
+import {DatePipe, NgClass, NgForOf} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {ActivatedRoute, convertToParamMap, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
@@ -32,7 +32,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     MatNativeDateModule,
     RouterLink,
     NgxMatTimepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgClass
   ],
   standalone: true,
   providers: [
@@ -52,6 +53,8 @@ export class AttendanceFormComponent implements OnInit {
     status: new FormControl<boolean | null>(true, [Validators.required]),
   });
   Staff: any;
+  StaffName: any;
+  SubjectName:any;
 
   constructor(
     private http: HttpClient,
@@ -85,6 +88,8 @@ export class AttendanceFormComponent implements OnInit {
         },
         next: (value: any) => {
           this.form.patchValue(value.data);
+          this.SubjectName = value.data.subjectName;
+          this.StaffName = value.data.staffName;
         },
       });
 

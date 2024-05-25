@@ -28,8 +28,8 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-full">
-          <mat-select placeholder="subject" formControlName="subjectId">
-            <mat-option  *ngFor="let item of Subject" [value]="item.id">{{item.name}}</mat-option>
+          <mat-select  [ngClass]="{ 'Subject': !data }" [placeholder]="SubjectName || 'Subject'" formControlName="subjectId">
+            <mat-option *ngFor="let item of Subject" [value]="item.id">{{ item.name }}</mat-option>
           </mat-select>
         </mat-form-field>
 

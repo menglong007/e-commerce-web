@@ -1,0 +1,96 @@
+<div class="pl-4 pt-4 pr-4 pb-1 h-full">
+  <div class="h-full bg-white rounded-2xl flex flex-col px-3 py-2 sm:px-8">
+    <div class="flex justify-between items-center">
+      <span class="font-bold text-3xl mb-4">Subject</span>
+
+      <div>
+        <button mat-raised-button color="primary" [routerLink]="'form/'">Add</button>
+      </div>
+    </div>
+
+
+    <div class="flex-auto relative rounded-xl" appScrollable>
+      <table mat-table [dataSource]="dataSource" matSort class="absolute">
+        <!-- Number Order Column -->
+        <ng-container matColumnDef="no">
+          <th mat-header-cell *matHeaderCellDef class="w-14 text-center">No</th>
+          <td mat-cell *matCellDef="let index = index" class="text-center">
+            {{ index + 1 }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ឈ្មោះ</th>
+          <td mat-cell *matCellDef="let element">{{ element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="class">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ថ្នាក់</th>
+          <td mat-cell *matCellDef="let element">{{ element.class}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="result">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ពិន្ទុ</th>
+          <td mat-cell *matCellDef="let element">{{ element.result}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="math">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>គណិតវិទ្យា</th>
+          <td mat-cell *matCellDef="let element">{{ element.math}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="khmer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>អក្សរសាស្រ្តខ្មែរ</th>
+          <td mat-cell *matCellDef="let element">{{ element.khmer}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="biology">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ជីវវិទ្យា</th>
+          <td mat-cell *matCellDef="let element">{{ element.biology}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="physics">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>រូបវិទ្យា</th>
+          <td mat-cell *matCellDef="let element">{{ element.physics}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="chemistry">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>គីមីវិទ្យា</th>
+          <td mat-cell *matCellDef="let element">{{ element.chemistry}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="history">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ប្រវត្តិវិទ្យា</th>
+          <td mat-cell *matCellDef="let element">{{ element.history}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="english">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>អង់គ្លេស</th>
+          <td mat-cell *matCellDef="let element">{{ element.english}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="w-28 text-center">
+            Action
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="flex justify-center">
+              <a mat-icon-button [routerLink]="'form/' + element.id">
+                <mat-icon color="primary">edit</mat-icon>
+              </a>
+              <button mat-icon-button (click)="onRemove(element.id)">
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator></mat-paginator>
+  </div>
+</div>
+

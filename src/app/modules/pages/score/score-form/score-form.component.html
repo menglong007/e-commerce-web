@@ -1,0 +1,78 @@
+<div class="pl-4 pt-4 pr-4 pb-1 h-full">
+  <div class="h-full bg-white rounded-2xl flex flex-col px-3 py-2 sm:px-8">
+    <div class="flex justify-between items-center">
+      <div class="">
+        <p class="text-3xl font-bold">{{ title }}</p>
+      </div>
+      <div class="flex gap-4">
+        <button mat-raised-button color="warn" [routerLink]="'/modules/pages/score'">
+          Back
+        </button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+      </div>
+
+    </div>
+    <div class="p-4">
+      <form class="flex flex-col  space-y-3" [formGroup]="form">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="name" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-select formControlName="class" placeholder="class">
+            <mat-option *ngFor="let item of Class" [value]="item.id">{{ item.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="flex gap-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>គណិតវិទ្យា</mat-label>
+            <input matInput placeholder="គណិតវិទ្យា" formControlName="math" [(ngModel)]="math" (keydown)="onResult()">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>អក្សរសាស្រ្តខ្មែរ</mat-label>
+            <input matInput placeholder="អក្សរសាស្រ្តខ្មែរ" formControlName="khmer" [(ngModel)]="khmer" (keydown)="onResult()">
+          </mat-form-field>
+        </div>
+
+        <div class="flex gap-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>ជីវវិទ្យា</mat-label>
+            <input matInput placeholder="ជីវវិទ្យា" formControlName="biology" [(ngModel)]="biology" (keydown)="onResult()">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>រូបវិទ្យា</mat-label>
+            <input matInput placeholder="រូបវិទ្យា" formControlName="physics" [(ngModel)]="physics" (keydown)="onResult()">
+          </mat-form-field>
+        </div>
+
+        <div class="flex gap-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>គីមីវិទ្យា</mat-label>
+            <input matInput placeholder="គីមីវិទ្យា" formControlName="chemistry" [(ngModel)]="chemistry" (keydown)="onResult()">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>ប្រវត្តិវិទ្យា</mat-label>
+            <input matInput placeholder="ប្រវត្តិវិទ្យា" formControlName="history" [(ngModel)]="history" (keydown)="onResult()">
+          </mat-form-field>
+        </div>
+
+        <div class="flex gap-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>អង់គ្លេស</mat-label>
+            <input matInput placeholder="អង់គ្លេស" formControlName="english" [(ngModel)]="english" (keydown)="onResult()">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>ពិន្ទុ</mat-label>
+            <input matInput placeholder="ពិន្ទុ" formControlName="result" [ngModel]="result">
+          </mat-form-field>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

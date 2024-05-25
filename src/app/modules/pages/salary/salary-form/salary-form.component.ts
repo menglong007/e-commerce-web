@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { NgForOf } from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -39,7 +39,9 @@ interface LeaveModel {
     MatDatepickerModule,
     MatNativeDateModule,
     RouterLink,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgIf,
+    NgClass
   ],
   standalone: true,
   providers: [
@@ -58,6 +60,8 @@ export class SalaryFormComponent implements OnInit  {
   });
   Staff: any;
   Subject: any;
+  StaffName: any;
+  SubjectName: any
 
   constructor(
     private http: HttpClient,
@@ -91,6 +95,8 @@ export class SalaryFormComponent implements OnInit  {
         },
         next: (value: any) => {
           this.form.patchValue(value.data);
+          this.StaffName = value.data.staffName;
+          this.SubjectName=  value.data.subjectName
         },
       });
 
@@ -100,7 +106,8 @@ export class SalaryFormComponent implements OnInit  {
     this.http.get('http://127.0.0.1:8000/api/staff').subscribe({
       next: (value: any) => {
         this.Staff = value.data;
-      },
+
+      }
     });
   }
 

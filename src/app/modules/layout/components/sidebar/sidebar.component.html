@@ -31,22 +31,22 @@
 
   <div class="mx-4 my-4 space-y-1">
     <!-- Dark Theme -->
-    <div
-      (click)="toggleTheme()"
-      class="group flex h-9 cursor-pointer items-center justify-start rounded p-2 hover:bg-gray-100 dark:hover:bg-night-600">
-      <mat-icon class="text-gray-400 dark:text-night-400">{{themeService.isDark ? 'light_mode' : 'dark_mode'}}</mat-icon>
+<!--    <div-->
+<!--      (click)="toggleTheme()"-->
+<!--      class="group flex h-9 cursor-pointer items-center justify-start rounded p-2 hover:bg-gray-100 dark:hover:bg-night-600">-->
+<!--      <mat-icon class="text-gray-400 dark:text-night-400">{{themeService.isDark ? 'light_mode' : 'dark_mode'}}</mat-icon>-->
 
-      <a class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-600 focus:outline-none dark:text-night-100">
-        {{ themeService.isDark ? 'Light Theme' : 'Dark Theme' }}
-      </a>
+<!--      <a class="ml-3 truncate text-xs font-semibold tracking-wide text-gray-600 focus:outline-none dark:text-night-100">-->
+<!--        {{ themeService.isDark ? 'Light Theme' : 'Dark Theme' }}-->
+<!--      </a>-->
 
-      <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">
-        <span
-          class="z-1 absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">
-          Theme
-        </span>
-      </div>
-    </div>
+<!--      <div class="fixed w-full" *ngIf="!(showSideBar$ | async)">-->
+<!--        <span-->
+<!--          class="z-1 absolute left-12 -top-4 w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100 dark:bg-white dark:text-night-900">-->
+<!--          Theme-->
+<!--        </span>-->
+<!--      </div>-->
+<!--    </div>-->
     <!-- Version -->
     <div
       class="group flex h-9 cursor-pointer items-center justify-start rounded p-2 hover:bg-gray-100 dark:hover:bg-night-600">

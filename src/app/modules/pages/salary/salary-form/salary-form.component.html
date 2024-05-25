@@ -15,8 +15,8 @@
     <div class="p-4">
       <form class="flex flex-col  space-y-3" [formGroup]="form">
         <mat-form-field appearance="outline" class="w-full">
-          <mat-select placeholder="staff" formControlName="staffId">
-            <mat-option *ngFor="let item of Staff" [value]="item.id">{{ item.name }}</mat-option>
+          <mat-select [ngClass]="{ 'Staff': !id }" [placeholder]="StaffName || 'Staff'" formControlName="staffId">
+            <mat-option  *ngFor="let item of Staff" [value]="item.id">{{ item.name }}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline" class="w-full">
@@ -25,7 +25,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-full">
-          <mat-select placeholder="subject" formControlName="subjectId">
+          <mat-select  [ngClass]="{ 'Subject': !id }" [placeholder]="SubjectName || 'Subject'" formControlName="subjectId">
             <mat-option *ngFor="let item of Subject" [value]="item.id">{{ item.name }}</mat-option>
           </mat-select>
         </mat-form-field>

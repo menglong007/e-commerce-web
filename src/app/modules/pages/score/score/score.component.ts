@@ -3,6 +3,7 @@ import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
+import {ScoreFormComponent} from "../score-form/score-form.component";
 import {HttpClient} from "@angular/common/http";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {take} from "rxjs";
@@ -12,12 +13,13 @@ import {CommonModule} from "@angular/common";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
 import {RouterLink} from "@angular/router";
 
 
 @Component({
   selector: 'app-create-product',
-  templateUrl: './attendance.component.html',
+  templateUrl: './score.component.html',
   imports: [
     CommonModule,
     MatTableModule,
@@ -34,15 +36,20 @@ import {RouterLink} from "@angular/router";
   standalone: true,
 
 })
-export class AttendanceComponent implements OnInit,AfterViewInit{
+export class ScoreComponent implements OnInit,AfterViewInit{
 
   displayedColumns: string[] = [
     'no',
-    'staffName',
-    'startTime',
-    'endTime',
-    'subjectName',
-    'status',
+    'name',
+    'class',
+    'result',
+    'math',
+    'khmer',
+    'physics',
+    'biology',
+    'history',
+    'chemistry',
+    'english',
     'action',
   ];
   dataSource = new MatTableDataSource<any>([]);
@@ -65,7 +72,7 @@ export class AttendanceComponent implements OnInit,AfterViewInit{
 
   private loadData(){
     const ref = this.snackBar.open('Loading...!');
-    this.http.get('http://127.0.0.1:8000/api/attendance').subscribe({
+    this.http.get('http://127.0.0.1:8000/api/score').subscribe({
       complete:()=>{
         ref.dismiss();
       },
@@ -88,7 +95,7 @@ export class AttendanceComponent implements OnInit,AfterViewInit{
 
   onDelete(id : string){
     const ref= this.snackBar.open('loading...');
-    this.http.delete(`http://127.0.0.1:8000/api/attendance/delete/${id}`).subscribe({
+    this.http.delete(`http://127.0.0.1:8000/api/score/delete/${id}`).subscribe({
       complete :()=>{
         ref.dismiss();
         this.loadData();

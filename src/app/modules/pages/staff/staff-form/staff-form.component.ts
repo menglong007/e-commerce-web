@@ -6,7 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSelectModule} from "@angular/material/select";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -36,6 +36,7 @@ interface StaffModel
     NgForOf,
     MatFormFieldModule,
     NgIf,
+    NgClass,
   ],
   standalone: true
 })
@@ -52,6 +53,7 @@ export class StaffFormComponent implements OnInit{
 
   })
   Subject : any;
+  SubjectName: any;
 
   constructor(private http:HttpClient,
               private ref : MatDialogRef<StaffFormComponent>,
@@ -70,6 +72,8 @@ export class StaffFormComponent implements OnInit{
             subjectId: value.data.subjectId,
             status: value.data.status,
           });
+          this.SubjectName = value.data.subject_name
+
         }
       })
     }
